@@ -15,23 +15,33 @@ const navbar: NavbarConfig = [
     children: [
       {
         text: "Coreznet",
-        children: [
-          { text: "intro", link: "/coreznet" },
-          { text: "installation", link: "/coreznet/installation" },
-        ],
+        link: "/coreznet",
       },
       {
         text: "Explorer",
-        children: [
-          { text: "intro", link: "/coreznet" },
-          { text: "installation", link: "/coreznet/installation" },
-        ],
-      }
+        link: "/explorer",
+      },
+      {
+        text: "Monitoring",
+        link: "/monitoring",
+      },
+      {
+        text: "Tools",
+        link: "/tools",
+      },
     ],
   },
   {
     text: "Links",
     children: [
+      {
+        text: "Main Page",
+        link: "https://coreum.com",
+      },
+      {
+        text: "Coreum Block Explorer",
+        link: "https://coreum.com",
+      },
       {
         text: "Github",
         link: "https://github.com/CoreumFoundation",
