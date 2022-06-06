@@ -1,3 +1,4 @@
 # Explorer
 
-Etiam ullamcorper tortor vestibulum sem feugiat, nec blandit velit ullamcorper. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi sit amet est enim. Phasellus egestas dolor eu enim feugiat convallis. Integer laoreet ultrices nisi, quis aliquam odio fermentum eget. Phasellus dictum elit vitae facilisis venenatis. Ut pellentesque gravida ante, et gravida nibh feugiat a. Vivamus lacinia consectetur ultrices. Vivamus erat quam, eleifend aliquet tellus vel, mollis rhoncus odio. Nam lorem velit, varius id diam id, finibus convallis orci. Curabitur velit leo, pretium nec sagittis nec, consequat eget purus. Maecenas faucibus turpis vel gravida feugiat. Sed vel convallis lacus. Nullam tristique fringilla lectus et fringilla. Aenean egestas maximus nisi. Donec semper lacinia lacus ac faucibus.
+As with all blockchains, coreum is augmented with a block explorer which reveals information about the status and activity of the network. The Coreum Block Explorer is a fork [Big Dipper](https://bigdipper.live), a highly customizable and general-purpose block explorer built for Cosmos-based chains.
+
