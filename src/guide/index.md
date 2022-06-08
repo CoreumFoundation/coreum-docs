@@ -1,10 +1,11 @@
 # Guide
 
-This guide contains a basic overview of the steps required to run `coreznet` locally.
+This guide contains a basic overview of the steps required to running a Coreum node locally. In order to do this, we will be making use of the `cored` CLI.
 
 ## Pre-Requisites
+This guide assumes that you are using a UNIX compliant operating system. 
 
-The only pre-requisite for working with `cored` is to have [golang](https://go.dev) installed on your machine. The `go` binary must also be included in your `$PATH`.
+Besides the Operating System constraints, the only pre-requisite for working with the `cored` CLI is to have [golang](https://go.dev) installed on your machine. The `go` binary must also be included in your `$PATH`.
 
 Note: If you are using Apple Silicon (M1) based hardware, please ensure that you have installed the `darwin/arm64` version of go. You can check which version of go you have installed by running
 
@@ -23,7 +24,7 @@ $ cd ~
 $ git clone git@github.com:CoreumFoundation/coreum.git
 ```
 
-Once the repo is cloned, we recommend you add the `bin` to your `$PATH` by modifying your shell configuration files.
+Once the repo is cloned, we recommend you add the `bin` folder of the repo to your `$PATH` by modifying your shell configuration files.
 
 ### Setup Cored
 
