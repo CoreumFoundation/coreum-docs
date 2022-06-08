@@ -4,12 +4,13 @@ Coreznet is a tool which simplifies interacting with Coreum, designed to aid the
 
 ## Pre-Requisites
 
-Coreznet depends on two pre-requisite tools that must be installed manually before proceeding:
+Coreznet depends on three tools that must be installed manually before proceeding:
 
 - [tmux ](https://github.com/tmux/tmux/wiki)
 - [docker ](https://www.docker.com)
+- [golang](https://www.go.dev)
 
-We advise that you follow the official guides for installing these tools on your operating system.
+If you already have these tools installed, you are good to go. If not, we advise that you follow the official guides for installing these tools on your operating system.
 
 ## Building
 
