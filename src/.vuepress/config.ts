@@ -11,6 +11,33 @@ const navbar: NavbarConfig = [
     link: "/guide",
   },
   {
+    text: "Ecosystem",
+    children: [
+      {
+        text: "Tokens",
+        children: [
+          {
+            text: "Overview",
+            link: "/tokens",
+          },
+          {
+            text: "Issuance",
+            link: "/tokens/issuance",
+          },
+        ],
+      },
+      {
+        text: "Smart Contracts",
+        children: [
+          {
+            text: "Overview",
+            link: "/contracts"
+          }
+        ]
+      }
+    ],
+  },
+  {
     text: "Components",
     children: [
       {
