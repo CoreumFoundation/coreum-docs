@@ -1,4 +1,4 @@
-# Introduction
+# Overview
 
 Tokens are a foundational part of the operation of any blockchain. $CORE is the native token of Coreum, and is the 'currency' with which one may interact with the network. It is the currency in which fees are paid, as well as the currency that is staked as a part of the consensus mechanism, and ensures the security of the network. Despite its significance to the network, $CORE merely forms the basis of an entire ecosystem of tokens. Indeed, Coreum natively supports a wide range of functionality associated with tokens, including issuance, minting, and behavioural interactions, which will be discussed below. 
 
