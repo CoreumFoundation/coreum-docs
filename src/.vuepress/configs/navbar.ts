@@ -61,7 +61,7 @@ export const navbar: NavbarConfig = [
     text: "Links",
     children: [
       {
-        text: "Main Page",
+        text: "Coreum Front Page",
         link: "https://coreum.com",
       },
       {
