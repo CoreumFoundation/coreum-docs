@@ -1,3 +1,13 @@
+---
+home: true
+heroImage: /hero.png
+tagline: Documentation for Coreum, a third-generation, layer-one blockchain based on the Cosmos SDK.
+actions: 
+  - text: Get Started
+    link: /guide
+    type: primary
+---
+
 # Introduction
 
 [Coreum](https://coreum.com) is a third-generation, layer one blockcahin built atop the Cosmos SDK. The ecosystem natively supports the issuance and minting of tokens, a Decentralised Exchange (DEX) to enable trading these tokens, and an interoperability bridge to foreign chains such as Ethereum, Bitcoin, and the XRP Ledger.
@@ -18,6 +28,6 @@ The system of bridges creates gateways which allow for foreign assets from other
 
 ## Cored and Coreznet
 
-As with all blockchains, Coreum depends on a number of nodes participating in the consensus protocol for the continuation of the blockchain. Coreum nodes are run using the `cored` application binaries, and associated cli. Though in principle the `cored` binary is sufficient for running a Coreum node, in practice, keeping these binaries as lean as possible means sacrificing some developer tooling and ergonomics. To account for this, the `coreznet` environment can be used as a wrapper around `cored`, which reintroduces all the quality of life features witheld from the `cored` binary. 
+As with all blockchains, Coreum depends on a number of nodes participating in the consensus protocol for the continuation of the blockchain. Coreum nodes are run using the `cored` application binaries, and associated cli. Though in principle the `cored` binary is sufficient for running a Coreum node, in practice, keeping these binaries as lean as possible means sacrificing some developer tooling and ergonomics. To account for this, the `coreznet` environment can be used as a wrapper around `cored`, which reintroduces all the quality of life features witheld from the `cored` binary.
 
-The [guide](/guide/index.md) section up next contains an overview of how to run an instance of `cored`, both in isolation, as well as with the use of `coreznet`. 
+The [guide](/guide/index.md) section up next contains an overview of how to run an instance of `cored`, both in isolation, as well as with the use of `coreznet`.
