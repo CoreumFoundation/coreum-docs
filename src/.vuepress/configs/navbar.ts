@@ -7,7 +7,7 @@ export const navbar: NavbarConfig = [
   },
   {
     text: "Guide",
-    link: "/guide/",
+    link: "/guides/",
   },
   {
     text: "Ecosystem",

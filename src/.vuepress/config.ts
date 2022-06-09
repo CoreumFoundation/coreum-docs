@@ -1,5 +1,6 @@
 import { defaultTheme, defineUserConfig } from "vuepress";
 import { navbar } from "./configs/navbar";
+import { sidebar } from "./configs/sidebar";
 
 export default defineUserConfig({
   lang: "en-us",
@@ -9,5 +10,6 @@ export default defineUserConfig({
   theme: defaultTheme({
     logo: "/logo.png",
     navbar,
+    sidebar,
   }),
 });
