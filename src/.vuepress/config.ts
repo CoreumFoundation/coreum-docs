@@ -7,7 +7,7 @@ export default defineUserConfig({
   description:
     "Documentation for Coreum, a Third-Generation Layer 1 Blockchain",
   theme: defaultTheme({
-    logo: "/assets/logo.png",
+    logo: "/logo.png",
     navbar,
   }),
 });
