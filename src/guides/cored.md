@@ -1,9 +1,10 @@
-# Guide
-
+# Running A Node
+ig
 This guide contains a basic overview of the steps required to running a Coreum node locally. In order to do this, we will be making use of the `cored` CLI.
 
 ## Pre-Requisites
-This guide assumes that you are using a UNIX compliant operating system. 
+
+This guide assumes that you are using a UNIX compliant operating system.
 
 Besides the Operating System constraints, the only pre-requisite for working with the `cored` CLI is to have [golang](https://go.dev) installed on your machine. The `go` binary must also be included in your `$PATH`.
 
@@ -130,25 +131,25 @@ Each `cored` instance starts, by default, with three keys; `alice`, `bob`, and `
 
 ## Stopping Coreznet
 
-Once `coreznet` is no longer required, there are three avenues to exiting the process. 
+Once `coreznet` is no longer required, there are three avenues to exiting the process.
 
 The first is to simply exit the `coreznet` environment, allowing the underlying `cored` instance to continue running. In order to do so, you may run
 
 ```
 (coreznet) [logs] $ exit
-exit 
+exit
 $
 ```
 
-Running this command will end the current `coreznet` process, and return you to the outer shell session. It is important to note, however, that exiting the process does not stop or reset it. Once exited, running coreznet again will return us to the same environment we exited before. 
+Running this command will end the current `coreznet` process, and return you to the outer shell session. It is important to note, however, that exiting the process does not stop or reset it. Once exited, running coreznet again will return us to the same environment we exited before.
 
-In order to stop the running `cored` instance, you may run 
+In order to stop the running `cored` instance, you may run
 
 ```
 (coreznet) [logs] $ stop
 (coreznet) [logs] $
 ```
 
-This will stop the running `cored` instance, preventing the consensus protocol from running and stopping the blockchain from growing. However, the `coreznet` session will remain alive, allowing for the `cored` instance to be restarted, or other commands to be run. For instance, if you run the `spec` command, the "status" property of the "cored-node" application object should have the value "stopped". 
+This will stop the running `cored` instance, preventing the consensus protocol from running and stopping the blockchain from growing. However, the `coreznet` session will remain alive, allowing for the `cored` instance to be restarted, or other commands to be run. For instance, if you run the `spec` command, the "status" property of the "cored-node" application object should have the value "stopped".
 
-At this 
+At this
