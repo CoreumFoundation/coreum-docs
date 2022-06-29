@@ -16,4 +16,4 @@ Burn transactions are the primary means by which the total supply of a token may
 
 ## Whitelist Transaction
 
-Whitelist transactions affect the whitelist setting (if present) of a token. These 
+Whitelist transactions affect the whitelist setting (if present) of a token. Accounts included in the whitelist are allowed to hold (send / recieve) and trade tokens. 

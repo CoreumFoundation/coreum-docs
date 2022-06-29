@@ -48,13 +48,13 @@ $ crust znet
 If all has gone according to the plan, your shell prompt will have changed, and should now look like
 
 ```
-(znet) [znet] $
+(znet) [logs] $
 ```
 
 From here, we can start a `cored` blockchain by simply running
 
 ```
-(znet) [znet] $ start
+(znet) [logs] $ start
 ```
 
 ## Inspecting `znet`
@@ -68,7 +68,7 @@ The `spec` command gives us information about `znet` environment and any applica
 #### Before `znet` has been started
 
 ```
-(znet) [znet]$ spec
+(znet) [logs]$ spec
 {
   "mode": "dev",
   "env": "znet",
@@ -79,7 +79,7 @@ The `spec` command gives us information about `znet` environment and any applica
 #### While `znet` is running
 
 ```
-(znet) [znet]$ spec
+(znet) [logs]$ spec
 {
   "mode": "dev",
   "env": "znet",
@@ -150,10 +150,10 @@ The `spec` command gives us information about `znet` environment and any applica
 
 ### Client
 
-Inside `znet` environment, preconfigured client application is created for each running `cored` node. The name of the client is the same as name of `cored` application reported by `spec` command. In default environment there is only one `cored` node called `coredev-00`. You may use it to get status information reported by that node: 
+Inside `znet` environment, preconfigured client application is created for each running `cored` node. The name of the client is the same as name of `cored` application reported by `spec` command. In default environment there is only one `cored` node called `coredev-00`. You may use it to get status information reported by that node:
 
 ```
-(znet) [znet] $ coredev-00 status
+(znet) [logs] $ coredev-00 status
 ```
 
 ### Keyring
@@ -161,7 +161,7 @@ Inside `znet` environment, preconfigured client application is created for each 
 Each `cored` instance is started, with three keys; `alice`, `bob`, and `charlie`. To view additional information such as the addresses, you may run
 
 ```
-(znet) [znet] $ coredev-00 keys list
+(znet) [logs] $ coredev-00 keys list
 ```
 
 ## Stopping `znet`
@@ -171,7 +171,7 @@ Once `znet` is no longer required, there are three avenues to exiting the proces
 The first is to simply exit the `znet` environment, allowing the underlying infrastructure to continue running. In order to do so, you may run
 
 ```
-(znet) [znet] $ exit
+(znet) [logs] $ exit
 exit
 $
 ```
@@ -181,7 +181,7 @@ Running this command will end the current `znet` shell session, and return you t
 In order to stop the running `znet` environment, you may run
 
 ```
-(znet) [znet] $ stop
+(znet) [logs] $ stop
 ```
 
 This will stop all the running applications, preventing the consensus protocol from running and stopping the blockchain from growing. However, the `znet` session will remain alive, allowing for the applications to be restarted, or other commands to be run. For instance, if you run the `spec` command, the `status` property of the `coreddev-00` application object should have the value `stopped`.
@@ -189,7 +189,7 @@ This will stop all the running applications, preventing the consensus protocol f
 At this point you may decide to start all the applications again by running
 
 ```
-(znet) [znet] $ start
+(znet) [logs] $ start
 ```
 
 ## Removing `znet`
@@ -197,7 +197,7 @@ At this point you may decide to start all the applications again by running
 To stop all the applications, delete their docker containers and all the created files run
 
 ```
-(znet) [znet] $ remove
+(znet) [logs] $ remove
 ```
 
 After doing this the `znet` shell session will terminate automatically.
