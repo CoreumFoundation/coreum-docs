@@ -40,8 +40,8 @@ export const navbar: NavbarConfig = [
     text: "Components",
     children: [
       {
-        text: "Coreznet",
-        link: "/coreznet",
+        text: "Crust",
+        link: "/crust",
       },
       {
         text: "Explorer",
