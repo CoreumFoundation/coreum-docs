@@ -22,7 +22,7 @@ The first step is to clone the `crust` repository. For the purposes of this guid
 
 ```
 $ cd ~
-$ git clone git@github.com:CoreumFoundation/crust.git
+$ git clone https://github.com/CoreumFoundation/crust.git
 ```
 
 Once the repo is cloned, we recommend you to add the `bin` folder of the repo to your `PATH` by modifying your shell configuration files.
