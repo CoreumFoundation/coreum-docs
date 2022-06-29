@@ -2,9 +2,9 @@
 home: true
 heroImage: /hero.png
 tagline: Documentation for Coreum, a third-generation, layer-one blockchain based on the Cosmos SDK.
-actions: 
+actions:
   - text: Get Started
-    link: /guide
+    link: /guides/cored.html
     type: primary
 ---
 
