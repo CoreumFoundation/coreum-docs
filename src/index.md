@@ -26,8 +26,8 @@ The DEX is native to the blockchain, enabling low-fee, secure, and fast trading 
 
 The system of bridges creates gateways which allow for foreign assets from other blockchains to interoperate with, and be wrapepd within Coreum.
 
-## Cored and Coreznet
+## Cored and Crust
 
-As with all blockchains, Coreum depends on a number of nodes participating in the consensus protocol for the continuation of the blockchain. Coreum nodes are run using the `cored` application binaries, and associated cli. Though in principle the `cored` binary is sufficient for running a Coreum node, in practice, keeping these binaries as lean as possible means sacrificing some developer tooling and ergonomics. To account for this, the `coreznet` environment can be used as a wrapper around `cored`, which reintroduces all the quality of life features witheld from the `cored` binary.
+As with all blockchains, Coreum depends on a number of nodes participating in the consensus protocol for the continuation of the blockchain. Coreum nodes are run using the `cored` application binary. In addition, Coreum delivers `crust` toolkit for developers' convenience, to make it easier to build and deploy local blockchain network for development purposes.
 
-The [guide](/guide/index.md) section up next contains an overview of how to run an instance of `cored`, both in isolation, as well as with the use of `coreznet`.
+The [guide](/guide/index.md) section up next contains an overview of how to run an instance of `cored`, both in isolation, as well as with the use of `crust`.
