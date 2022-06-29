@@ -1,214 +1,171 @@
-# Coreznet
+# crust
+`crust` helps you build and run all the applications needed for development and testing.
 
-Coreznet is a tool which simplifies interacting with Coreum, designed to aid the development process of applications on Coreum.
+## Prerequisites
+To use `crust` you need:
+- `go 1.16` or newer
+- `tmux`
+- `docker`
 
-## Pre-Requisites
-
-Coreznet depends on three tools that must be installed manually before proceeding:
-
-- [tmux ](https://github.com/tmux/tmux/wiki)
-- [docker ](https://www.docker.com)
-- [golang](https://www.go.dev)
-
-If you already have these tools installed, you are good to go. If not, we advise that you follow the official guides for installing these tools on your operating system.
+Install them manually before continuing.
 
 ## Building
 
-Coreznet can be built using our [building system]. To build coreznet, simply run
+Build all the required binaries by running:
 
 ```
-$ core build/coreznet
+$ crust build
 ```
 
-This command requires the `cored` binary. If you haven't already build the cored binary, you can do so by running
+## Executing `znet`
+
+`znet` is the tool used to spin up development environment running the same components which are used in production.
+
+`znet` may be executed using two methods.
+First is direct where you execute command directly:
 
 ```
-$ core build/cored
+$ crust znet <command> [flags]
 ```
 
-All binaries can be built together by running
+Second one is by entering the znet-environment:
 
 ```
-$ core build
+$ crust znet [flags]
+(<environment-name>) [znet] $ <command> 
 ```
 
-Upon completion, the `coreznet` binary should be available in bin.
-
-## Executing Coreznet
-
-`coreznet` may be executed using two methods; 'direct' and 'environment'
-
-To execute coreznet in direct mode, run
-
-```
-$ coreznet <command> [flags]
-```
-
-To execute coreznet in environment mode, run
-
-```
-coreznet [flags]
-(<environment name>) [logs] $ <command>
-```
-
-Using the environment method makes it easier to run multiple commands, and tends to save time by avoiding the need for extra inputs.
+The second method saves some typing.
 
 ## Flags
 
-Coreznet can be used with a number of flags, all of which are optional. These flags (and their default values) can be listed by running
+All the flags are optional. Execute
 
 ```
-$coreznet <command> --help
+$ crust znet <command> --help
 ```
 
-You may then enter the enviroment by running
+to see what the default values are.
 
-```
-$ coreznet --env=coreznet --mode=dev --target=tmux
-(coreznet) [logs] $
-```
+### --env
 
-### `--env`
+Defines name of the environment, it is visible in brackets on the left.
+Each environment is independent, you may create many of them and work with them in parallel.
 
-Defines the name of the environment, visible in brackets on the left. Each environment is atomic and independent, thus allowing you to work with more than one in paralell.
+### --mode
 
-### `--mode`
-
-Defines the list of applications to run. You may see their definitions here.
-
-### `--target`
-
-Defines where applications are deployed. Possible values are:
-
-- `tmux` - Applications are started as OS proceses and their logs are presented in the tmux console.
-- `docker` - Applications are started as docker containers
-- `direct` - Applications are started as OS processes.
-
-## Logs
-
-After entering the environment, the urrent directory in the console is set to the one containing the logs produced by all applications. Its absolute path resolves to `~/.cache/coreznet/<env-name>/logs`.
-
-Regardless of which `--target` is used, logs are always dumped to this locations, allowing for analysis using any method of your preference (`grep`, `cut`, `tail`, etc.)
-
-Once started, logs from the application can be talied by making use of the `logs` wrapper:
-
-```
-(coreznet) [logs] $ logs cored-node
-```
+Defines the list of applications to run. You may see their definitions in [crust/pkg/znet/mode.go](crust/pkg/znet/mode.go).
 
 ## Commands
 
-In the environement some wrapper scripts for `coreznet` are generated automatically to make your life easier. Each such `<command>` is effectively aliased to `coreznet <command>`.
+In the environment some wrapper scripts for `znet` are generated automatically to make your life easier.
+Each such `<command>` calls `crust znet <command>`.
 
 Available commands are:
-
 - `start` - starts applications
 - `stop` - stops applications
-- `remove` - stops applications, and removes all resources used by the environment
-- `spec` - prints the specification of the environment
-- `ping-pong` - sends transactions to generate traffic on the blockchain
-- `stress` - tests the benchmarking logic of `corezstress`
+- `remove` - stops applications and removes all the resources used by the environment
+- `spec` - prints specification of the environment
+- `tests` - run integration tests
+- `console` - starts `tmux` session containing logs of all the running applications
+- `ping-pong` - sends transactions to generate traffic on blockchain
+- `stress` - tests the benchmarking logic of `zstress`
 
 ## Example
 
-An simple start-stop workflow using coreznet may look something like
+Basic workflow may look like this:
 
 ```
 # Enter the environment:
-$ coreznet --env=coreznet --mode=dev --target=tmux
-(coreznet) [logs] $
+$ crust znet
+(znet) [znet] $
 
 # Start applications
-(coreznet) [logs] $ start
+(znet) [znet] $ start
 
 # Print spec
-(coreznet) [logs] $ spec
+(znet) [znet] $ spec
 
 # Stop applications
-(coreznet) [logs] $ stop
+(znet) [znet] $ stop
 
 # Start applications again
-(coreznet) [logs] $ start
+(znet) [znet] $ start
 
 # Stop everything and clean resources
-(coreznet) [logs] $ remove
-(coreznet) [logs] $ exit
+(znet) [znet] $ remove
+$
 ```
 
-## Manually Interacting with the Blockchain
+## Logs
 
-Each `cored` instance started by `coreznet` is accessible through a wrapper script which shares the name of the node. This enables manual interactions with the client. There are also three standard keys, `alice`, `bob`, and `charlie`, which are added to the keystore of each instance.
-
-If you start `coreznet` with `--mode=dev`, there is only one `cored` application called `cored-node`. To access this client, you may use the cored-node warpper as follows:
+After entering and starting environment:
 
 ```
-(coreznet) [logs] $ cored-node keys list
-(coreznet) [logs] $ cored-node query bank balances cosmos1rd8wynz2987ey6pwmkuwfg9q8hf04xdyjqy2f4
-(coreznet) [logs] $ cored-node tx bank send bob cosmos1rd8wynz2987ey6pwmkuwfg9q8hf04xdyjqy2f4 10core
-(coreznet) [logs] $ cored-node query bank balances cosmos1rd8wynz2987ey6pwmkuwfg9q8hf04xdyjqy2f
+$ crust znet
+(znet) [znet] $ start
 ```
 
-Different insances of `cored` may be accessbile in another `--mode`. Running the `spec` command will list them.
-
-## Integration Tests
-
-Integration tests are defined in 'test/index.go'
-
-You may run tests directly
+it is possible to use `logs` wrapper to tail logs from an application:
 
 ```
-$ coreznet test
+(znet) [znet] $ logs coredev-00
 ```
 
-By default, tests use the enviroment `--target=tmux`, and run on top `--mode=test`.
+## Playing with the blockchain manually
 
-It is also possible to enter the environment first, and run tests from there:
+For each `cored` instance started by `znet` wrapper script named after the name of the node is created, so you may call the client manually.
+There are also three standard keys: `alice`, `bob` and `charlie` added to the keystore of each instance.
+
+If you start `znet` using `--mode=dev` there is one `cored` application called `coredev-00`.
+To use the client you may use `coredev-00` wrapper:
 
 ```
-$ coreznet --env=coreznet --mode=test --target=tmux
-(coreznet) [logs] $ tests
+(znet) [znet] $ coredev-00 keys list
+(znet) [znet] $ coredev-00 query bank balances cosmos1rd8wynz2987ey6pwmkuwfg9q8hf04xdyjqy2f4
+(znet) [znet] $ coredev-00 tx bank send bob cosmos1rd8wynz2987ey6pwmkuwfg9q8hf04xdyjqy2f4 10core
+(znet) [znet] $ coredev-00 query bank balances cosmos1rd8wynz2987ey6pwmkuwfg9q8hf04xdyjqy2f
+```
+
+## Integration tests
+
+Tests are defined in [crust/tests/index.go](crust/tests/index.go)
+
+You may run tests directly:
+
+```
+$crust znet test
+```
+
+Tests run on top `--mode=test`.
+
+It's also possible to enter the environment first, and run tests from there:
+
+```
+$ crust znet --mode=test
+(znet) [znet] $ tests
 
 # Remember to clean everything
-(coreznet) [logs] $ remove
+(crustznet) [logs] $ remove
 ```
 
-Tests may also be run using any environemnt defined by `--target`, so running it on top of applications deployed using `docker` is also possible.
+After tests complete environment is still running so if something went wrong you may inspect it manually.
+
+## Ping-pong
+
+There is `ping-pong` command available in `znet` sending transactions to generate some traffic on blockchain.
+To start it run these commands:
 
 ```
-$ coreznet --env=coreznet --mode=test --target=docker
-(coreznet) [logs] $ tests
-
-# Remember to clean everything
-(coreznet) [logs] $ remove
+$ crust znet
+(znet) [znet] $ start
+(znet) [znet] $ ping-pong
 ```
 
-After tests conclude, the environment remains active. This is to ensure that in the event something goes wrong, it is still possible to conduct manual investigation and analysis. This becomes even more apparent when running coreznet in the `tmux` environment, since the tmux console remains active after tests are completed, allowing for logs to be easily accessed.
+You will see logs reporting that tokens are constantly transferred.
 
-```
-$ coreznet --env=coreznet --mode=test --target=tmux
-(coreznet) [logs] $ tests
-(coreznet) [logs] $ start
-```
+## Hard reset
 
-Following from above, the logs are available in the current directory.
-
-## Ping-Pong
-
-The `ping-pong` command in `coreznet` continually sends transactions on the blockchain until stopped. This is useful for generating some background traffic on the blockchain, and can be started as follows:
-
-```
-$ coreznet --target=direct
-(coreznet) [logs] $ start
-(coreznet) [logs] $ ping-pong
-```
-
-Upon running the above, logs will be printed indicated the tokens being transferred.
-
-## Hard Reset
-
-All data created by `coreznet` can be manually removed, if the need arises. This can be achieved as follows
-
-- run `ps aux` to find all related running processes, and kill them using `kill -9 <pid>`.
-- use `docker ps -a`, then `docker stop <container-id>`, and finally `docker rm <container-id>` to remove any containers related to `coreznet` (this only applies when `coreznet` is started using `--target=docker`).
-- use `docker images` and `docker rmi <image-id>` to remove related docker images
-- run `rm -rf ~/.cache/coreznet` to remove all files created by `coreznet`
+If you want to manually remove all the data created by `znet` do this:
+- use `docker ps -a`, `docker stop <container-id>` and `docker rm <container-id>` to delete related running containers
+- run `rm -rf ~/.cache/crust/znet` to remove all the files created by `znet`
